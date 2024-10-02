@@ -1,10 +1,15 @@
 #ifndef TAPE_H
 #define TAPE_H
 
-template<size_t N>
+#include <string>
+#include <fstream>
+
 class Tape
 {
 public:
+	// Файл (лента) file, длина ленты N, конфигурационный файл configFile
+	Tape(const std::string& file, size_t N, const std::string& configFile);
+
 	// Операции записи на ленту и чтения с неё
 	void write(int value);
 	int read();
@@ -12,6 +17,9 @@ public:
 	// Операции перемещения ленты вперед и назад
 	void moveForward();
 	void moveBack();
+
+private:
+	std::fstream _file;
 };
 
 #endif	// TAPE_H
